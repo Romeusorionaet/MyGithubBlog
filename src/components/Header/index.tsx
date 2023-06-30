@@ -1,24 +1,38 @@
 import { useContext } from 'react'
 import { GithubContext } from '../../contexts/GithubContext'
+import { HeaderContainer, DescriptionContainer } from './styles'
+import { Buildings, GithubLogo, Users } from 'phosphor-react'
 
 export function Header() {
   const { githubData } = useContext(GithubContext)
-  // githubData.map((data) => console.log(data.id))
 
   return (
-    <div>
-      <h1>Header</h1>
-      {githubData && (
-        <div>
-          <img src={githubData.avatar_url} alt="avatar do usuário" />
-          <h2>{githubData.name}</h2>
-          <p>{githubData.bio}</p>
-          <hr />
-          <span>{githubData.login}</span>
-          <p>Em busca de uma oportunidade!</p>
-          <span>{githubData.followers}</span>
+    <HeaderContainer>
+      <div className="wrapper_img">
+        <img src={githubData.avatar_url} alt="avatar do usuário" />
+      </div>
+
+      <DescriptionContainer>
+        <h1>{githubData.name}</h1>
+        <p>{githubData.bio}</p>
+
+        <div className="wrapper_summary">
+          <div>
+            <GithubLogo size={20} weight="fill" />
+            <span>{githubData.login}</span>
+          </div>
+
+          <div>
+            <Buildings size={20} weight="duotone" />
+            <p>Em busca de uma oportunidade!</p>
+          </div>
+
+          <div>
+            <Users size={20} weight="duotone" />
+            <span>{githubData.followers}</span>
+          </div>
         </div>
-      )}
-    </div>
+      </DescriptionContainer>
+    </HeaderContainer>
   )
 }

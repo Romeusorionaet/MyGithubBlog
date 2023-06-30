@@ -7,19 +7,23 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    :root {
+        font-size: 62.5%;
+    }
+
     :focus {
         outline: 0;
         /* box-shadow: 0 0 0 2px ${(props) => props.theme['green-500']}; */
     }
 
     body {
-        background-color: ${(props) => props.theme['gray-700']};
-        color: ${(props) => props.theme['gray-100']};
+        background-color: ${(props) => props.theme['blue-700']};
+        color: ${(props) => props.theme['blue-100']};
         -webkit-font-smoothing: antialiased;
     }
 
     body, input, textarea, button {
-        font: 400 1rem Roboto, sans-serif;
+        font: 400 1rem Nunito, sans-serif;
     }
 
 `

@@ -2,28 +2,31 @@ import { Header } from '../../components/Header'
 import { GithubContext } from '../../contexts/GithubContext'
 import { useContext } from 'react'
 import { Main } from './components/Main'
+import { HomeContainer } from './styles'
+import logo from '../../assets/logo.svg'
 
 export function Home() {
   const { githubData, fetchGithubSearchIssues } = useContext(GithubContext)
 
   return (
-    <div>
+    <HomeContainer>
+      <div className="wrapper_logo">
+        <img src={logo} alt="" />
+      </div>
       <Header />
-      <hr />
-      <h1>Home</h1>
 
-      <div>
+      <main>
         <h2>Publicações: {githubData.public_repos}</h2>
         <input
           type="text"
           onChange={(event) => fetchGithubSearchIssues(event.target.value)}
         />
-      </div>
 
-      <div>
-        <h2>Issues cards</h2>
-        <Main />
-      </div>
-    </div>
+        <div>
+          <h2>Issues cards</h2>
+          <Main />
+        </div>
+      </main>
+    </HomeContainer>
   )
 }
