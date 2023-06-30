@@ -14,6 +14,7 @@ interface GithubDataIssueProps {
   number: number
   title: string
   body: string
+  updated_at: string
 }
 
 interface GithubContextType {

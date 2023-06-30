@@ -3,6 +3,7 @@ import img from '../../assets/bgHeader.svg'
 
 export const HomeContainer = styled.div`
   height: 100vh;
+  margin-bottom: 10rem;
 
   .wrapper_logo {
     background-image: url(${img});
@@ -19,10 +20,5 @@ export const HomeContainer = styled.div`
     img {
       width: 14.8rem;
     }
-  }
-
-  main {
-    background: gray;
-    margin-top: 20rem;
   }
 `

@@ -2,9 +2,16 @@ import { useContext } from 'react'
 import { GithubContext } from '../../../../contexts/GithubContext'
 import { useNavigate } from 'react-router-dom'
 
-export function Main() {
-  const { githubSearchIssue } = useContext(GithubContext)
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
+import { MainContainer, InputContainer, CardsContainer } from './styles'
+
+export function Main() {
+  const { githubData, fetchGithubSearchIssues, githubSearchIssue } =
+    useContext(GithubContext)
+
+  // const dateFormatter = new Intl.DateTimeFormat('pt-BR')
   const navigate = useNavigate()
 
   function handleIssueCardDetails(issueId: string) {
@@ -12,21 +19,43 @@ export function Main() {
   }
 
   return (
-    <div>
-      <hr />
-      <h2>Main</h2>
-      {githubSearchIssue &&
-        githubSearchIssue.map((issue) => {
-          return (
-            <div
-              onClick={() => handleIssueCardDetails(String(issue.number))}
-              key={issue.number}
-            >
-              <h2>{issue.title}</h2>
-              <p>{issue.body}</p>
-            </div>
-          )
-        })}
-    </div>
+    <MainContainer>
+      <InputContainer>
+        <div className="wrapper_repo">
+          <p>Publicações</p>
+          <span>{githubData.public_repos} Publicações</span>
+        </div>
+
+        <input
+          type="text"
+          placeholder="Buscar conteúdo"
+          onChange={(event) => fetchGithubSearchIssues(event.target.value)}
+        />
+      </InputContainer>
+
+      <CardsContainer>
+        {githubSearchIssue &&
+          githubSearchIssue.map((issue) => {
+            return (
+              <div
+                className="card"
+                onClick={() => handleIssueCardDetails(String(issue.number))}
+                key={issue.number}
+              >
+                <div className="title">
+                  <h2>{issue.title}</h2>
+                  <span>
+                    Há{' '}
+                    {formatDistanceToNow(new Date(issue.updated_at), {
+                      locale: ptBR,
+                    })}
+                  </span>
+                </div>
+                <p>{issue.body}</p>
+              </div>
+            )
+          })}
+      </CardsContainer>
+    </MainContainer>
   )
 }
