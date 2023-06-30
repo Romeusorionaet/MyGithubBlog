@@ -19,7 +19,7 @@ interface GithubDataIssueProps {
 interface GithubContextType {
   githubData: GithubDataProps
   githubSearchIssue: GithubDataIssueProps[]
-  handleIssueSearch: (data: string) => void
+  fetchGithubSearchIssues: (search: string) => void
 }
 
 interface GithubContextProviderProps {
@@ -31,7 +31,7 @@ export const GithubContext = createContext({} as GithubContextType)
 export function GithubContextProvider({
   children,
 }: GithubContextProviderProps) {
-  const [githubData, setGithubData] = useState<GithubDataProps>({
+  const [githubData, setGithubData] = useState({
     avatar_url: '',
     name: '',
     bio: '',
@@ -44,44 +44,35 @@ export function GithubContextProvider({
     GithubDataIssueProps[]
   >([])
 
-  const [issueSearch, setIssueSearch] = useState('')
-
-  const username = 'Romeusorionaet'
-
   async function fetchGithubProfile() {
     await api
-      .get(`/users/${username}`)
+      .get(`/users/Romeusorionaet`)
       .then((response) => response.data)
       .then((data) => setGithubData(data))
   }
 
-  async function fetchGithubSearchIssues() {
-    console.log(issueSearch, 'search')
-
+  async function fetchGithubSearchIssues(seacrh: string) {
     await api
-      .get(`/search/issues?q=${issueSearch}%20repo:${username}/MyGithubBlog`)
+      .get(`/search/issues?q=${seacrh}%20repo:Romeusorionaet/MyGithubBlog`)
       .then((response) => response.data)
       .then((data) => setGithubSearchIssue(data.items))
   }
 
-  function handleIssueSearch(data: string) {
-    setIssueSearch(data)
-  }
-
-  console.log(githubSearchIssue)
+  useEffect(() => {
+    fetchGithubSearchIssues('')
+  }, [])
 
   useEffect(() => {
     fetchGithubProfile()
   }, [])
 
-  useEffect(() => {
-    fetchGithubSearchIssues()
-    // stoped here
-  })
-
   return (
     <GithubContext.Provider
-      value={{ githubData, githubSearchIssue, handleIssueSearch }}
+      value={{
+        githubData,
+        githubSearchIssue,
+        fetchGithubSearchIssues,
+      }}
     >
       {children}
     </GithubContext.Provider>

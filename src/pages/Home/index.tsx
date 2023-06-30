@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { Main } from './components/Main'
 
 export function Home() {
-  const { githubData, handleIssueSearch } = useContext(GithubContext)
+  const { githubData, fetchGithubSearchIssues } = useContext(GithubContext)
 
   return (
     <div>
@@ -16,7 +16,7 @@ export function Home() {
         <h2>Publicações: {githubData.public_repos}</h2>
         <input
           type="text"
-          onChange={(event) => handleIssueSearch(event.target.value)}
+          onChange={(event) => fetchGithubSearchIssues(event.target.value)}
         />
       </div>
 

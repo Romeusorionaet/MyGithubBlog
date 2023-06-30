@@ -1,10 +1,15 @@
 import { useContext } from 'react'
 import { GithubContext } from '../../../../contexts/GithubContext'
+import { useNavigate } from 'react-router-dom'
 
 export function Main() {
   const { githubSearchIssue } = useContext(GithubContext)
 
-  // console.log(githubSearchIssue)
+  const navigate = useNavigate()
+
+  function handleIssueCardDetails(issueId: string) {
+    navigate(`/details/${issueId}`)
+  }
 
   return (
     <div>
@@ -13,7 +18,10 @@ export function Main() {
       {githubSearchIssue &&
         githubSearchIssue.map((issue) => {
           return (
-            <div key={issue.number}>
+            <div
+              onClick={() => handleIssueCardDetails(String(issue.number))}
+              key={issue.number}
+            >
               <h2>{issue.title}</h2>
               <p>{issue.body}</p>
             </div>
