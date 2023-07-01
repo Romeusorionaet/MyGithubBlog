@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom'
 import { api } from '../../service/api'
 import { useEffect, useState } from 'react'
 
+import { DetailsContainer, SummaryContainer, BodyContainer } from './styles'
+
 export function Details() {
   const params = useParams()
   const [issueCardDetails, setIssueCardDetails] = useState({
@@ -23,15 +25,22 @@ export function Details() {
   }, [params])
 
   return (
-    <div>
-      <h1>Details</h1>
-      <span>title: {issueCardDetails.title}</span>
-      <br />
-      <span>comentários: {issueCardDetails.coments}</span>
-      <span>data: {issueCardDetails.updated_at}</span>
-      <span>user: {issueCardDetails.user.login}</span>
-      <hr />
-      <p>body: {issueCardDetails.body}</p>
-    </div>
+    <DetailsContainer>
+      <div>
+        <p>voltar</p>
+        <p>ver no github</p>
+      </div>
+
+      <h2>title: {issueCardDetails.title}</h2>
+      <SummaryContainer>
+        <span>comentários: {issueCardDetails.coments}</span>
+        <span>data: {issueCardDetails.updated_at}</span>
+        <span>user: {issueCardDetails.user.login}</span>
+      </SummaryContainer>
+
+      <BodyContainer>
+        <p>body: {issueCardDetails.body}</p>
+      </BodyContainer>
+    </DetailsContainer>
   )
 }

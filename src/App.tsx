@@ -4,6 +4,9 @@ import { defaultTheme } from './styles/themes/default'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
 import { GithubContextProvider } from './contexts/GithubContext'
+import logo from './assets/logo.svg'
+
+import { LogoContainer } from './stylesApp'
 
 export function App() {
   return (
@@ -11,6 +14,9 @@ export function App() {
       <GlobalStyle />
       <GithubContextProvider>
         <BrowserRouter>
+          <LogoContainer>
+            <img src={logo} alt="" />
+          </LogoContainer>
           <Router />
         </BrowserRouter>
       </GithubContextProvider>

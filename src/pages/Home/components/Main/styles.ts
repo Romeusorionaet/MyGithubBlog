@@ -32,6 +32,7 @@ export const InputContainer = styled.div`
     border-radius: 6px;
     border: 1px solid ${(props) => props.theme['blue-600']};
     background-color: ${(props) => props.theme['darkBlue-300']};
+    color: ${(props) => props.theme['blue-500']};
 
     font-size: 1.6rem;
     font-style: normal;
