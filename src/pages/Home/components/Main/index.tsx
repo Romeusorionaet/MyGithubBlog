@@ -11,7 +11,6 @@ export function Main() {
   const { githubData, fetchGithubSearchIssues, githubSearchIssue } =
     useContext(GithubContext)
 
-  // const dateFormatter = new Intl.DateTimeFormat('pt-BR')
   const navigate = useNavigate()
 
   function handleIssueCardDetails(issueId: string) {

@@ -18,17 +18,17 @@ export function Header() {
 
         <div className="wrapper_summary">
           <div>
-            <GithubLogo size={20} weight="fill" />
+            <GithubLogo size={20} color="#7B96B2" weight="fill" />
             <span>{githubData.login}</span>
           </div>
 
           <div>
-            <Buildings size={20} weight="duotone" />
+            <Buildings size={20} color="#7B96B2" weight="fill" />
             <p>Em busca de uma oportunidade!</p>
           </div>
 
           <div>
-            <Users size={20} weight="duotone" />
+            <Users size={20} color="#7B96B2" weight="fill" />
             <span>{githubData.followers}</span>
           </div>
         </div>
