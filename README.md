@@ -65,7 +65,7 @@ Se você encontrar algum problema ou tiver sugestões de melhorias para o Github
 <h3>Licença</h3>
 
 <p>
-O Github Blog é distribuído sob a licença MIT. Para obter mais informações, consulte o arquivo LICENSE.
+O Github Blog é distribuído sob a licença MIT.
 </p>
 
 <br />
