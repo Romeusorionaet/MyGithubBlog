@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const DetailsContainer = styled.div`
-  margin: 0 auto;
+  margin: 0 auto 5rem;
   max-width: 864px;
 `
 
@@ -59,6 +59,18 @@ export const HeaderContainer = styled.header`
       }
     }
   }
+
+  @media (max-width: 800px) {
+    .summary {
+      margin-top: 2rem;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
 `
 
 export const BodyContainer = styled.div`
@@ -71,6 +83,8 @@ export const BodyContainer = styled.div`
   }
 
   .markdown p,
+  a,
+  li,
   code {
     font-size: 1.6rem;
     font-style: normal;
@@ -80,23 +94,40 @@ export const BodyContainer = styled.div`
     color: ${(props) => props.theme['blue-300']};
   }
 
+  .markdown a {
+    color: ${(props) => props.theme['blue-200']};
+  }
+
   .markdown p strong {
     color: ${(props) => props.theme['blue-100']};
   }
 
-  .markdown h2 {
+  .markdown h2,
+  h1 {
     margin-top: 2rem;
     color: ${(props) => props.theme['blue-800']};
 
     font-size: 2rem;
   }
 
+  .markdown li {
+    margin-left: 1.6rem;
+    margin-top: 1rem;
+  }
+
   .markdown code {
     background-color: ${(props) => props.theme['blue-700']};
-    background: blue;
     padding: 1.6rem;
 
     display: flex;
     align-items: center;
+
+    white-space: pre-wrap;
+  }
+
+  @media (max-width: 800px) {
+    .markdown {
+      padding: 2rem;
+    }
   }
 `

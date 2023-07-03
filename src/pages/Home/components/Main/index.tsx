@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import ReactMarkdown from 'react-markdown'
 
 import { MainContainer, InputContainer, CardsContainer } from './styles'
 
@@ -50,7 +51,7 @@ export function Main() {
                     })}
                   </span>
                 </div>
-                <p>{issue.body}</p>
+                <ReactMarkdown className="markdown">{issue.body}</ReactMarkdown>
               </div>
             )
           })}

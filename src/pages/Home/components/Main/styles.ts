@@ -59,6 +59,8 @@ export const CardsContainer = styled.div`
     width: 41.6rem;
     height: 26rem;
 
+    cursor: pointer;
+
     border-radius: 10px;
     padding: 3.2rem;
     background-color: ${(props) => props.theme['blue-700']};
@@ -93,7 +95,7 @@ export const CardsContainer = styled.div`
       }
     }
 
-    p {
+    .markdown {
       color: ${(props) => props.theme['blue-300']};
       overflow: hidden;
 
@@ -107,9 +109,38 @@ export const CardsContainer = styled.div`
       overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse o número de linhas especificado */
       text-overflow: ellipsis; /* Adiciona reticências (...) ao final do texto cortado */
     }
+
+    .markdown a {
+      color: ${(props) => props.theme['blue-200']};
+    }
+
+    .markdown h2 {
+      font-size: 2rem;
+    }
   }
 
   @media (max-width: 800px) {
     padding: 0 0.5rem;
+
+    .card {
+      max-width: 31.6rem;
+      padding: 1.6rem;
+
+      .title h2 {
+        font-size: 1.6rem;
+      }
+      .title span {
+        font-size: 1.3rem;
+      }
+      .markdown {
+        -webkit-line-clamp: 6;
+      }
+      .markdown h2 {
+        font-size: 1.4rem;
+      }
+      .markdown p {
+        font-size: 1.2rem;
+      }
+    }
   }
 `
