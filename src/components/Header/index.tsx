@@ -29,7 +29,7 @@ export function Header() {
 
           <div>
             <Users size={20} color="#7B96B2" weight="fill" />
-            <span>{githubData.followers}</span>
+            <span>{githubData.followers} seguidores</span>
           </div>
         </div>
       </DescriptionContainer>
