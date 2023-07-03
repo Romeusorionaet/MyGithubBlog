@@ -1,6 +1,6 @@
 <h1>Github Blog</h1>
 
-[GithubBlog]()
+[GithubBlog](https://my-github-blog.vercel.app)
 
 ![preview](./src/assets/preview/previewMyGithubBlogDesktop.png)
 
